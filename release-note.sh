@@ -1,6 +1,8 @@
 #!/bin/sh
 # By flopes
 
+GREP_VALUE=ticket-
+
 # 1 - copy/paste script in project root folder
 # 2 - run: 
 #		mkdir release-notes
@@ -20,6 +22,9 @@ else
 	echo "Starting Release Note Generator shell script..."
 fi
 
-git log $1..$2 --pretty=format:"* %s" --no-merges > release-notes/release-note_$2.txt
+# Git options to customize script
+OPT_GREP="-i --grep=$GREP_VALUE"
+
+git log $1..$2 --pretty=format:"* %s" --no-merges $OPT_GREP > release-notes/release-note_$2.txt
 
 echo "... ending Release Note Generator shell script."
