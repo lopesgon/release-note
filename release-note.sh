@@ -20,6 +20,6 @@ else
 	echo "Starting Release Note Generator shell script..."
 fi
 
-git log $1..$2 --pretty=format:"* %s" > release-notes/release-note_$2.txt
+git log $1..$2 --pretty=format:"* %s" --no-merges > release-notes/release-note_$2.txt
 
 echo "... ending Release Note Generator shell script."
